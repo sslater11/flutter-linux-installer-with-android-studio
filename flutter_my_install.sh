@@ -93,6 +93,7 @@ mv "flutter" "$HOME/"
 cd "$HOME/flutter/bin"
 
 ./flutter --disable-analytics
+./dart --disable-analytics
 ./flutter config --android-sdk="$HOME/Android/Sdk"
 ./flutter config --android-studio-dir="$HOME/android-studio-ladybug/"
 

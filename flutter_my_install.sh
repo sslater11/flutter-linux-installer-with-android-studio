@@ -92,26 +92,51 @@ mv "flutter" "$HOME/"
 
 cd "$HOME/flutter/bin"
 
+echo
+echo If this freezes, press enter. It should take less than a second.
 ./flutter --disable-analytics
+echo If this freezes, press enter. It should take less than a second.
 ./dart --disable-analytics
+echo If this freezes, press enter. It should take less than a second.
 ./flutter config --android-sdk="$HOME/Android/Sdk"
 ./flutter config --android-studio-dir="$HOME/android-studio-ladybug/"
-
 
 echo
 echo
 echo "--------------------"
-echo "Please add flutter to your \$PATH variable to make it executable using the 'flutter' command."
-echo "For bash shell type this command to add it to your bash path permanently."
-echo "echo 'export PATH=\"\$HOME/flutter/bin:\$PATH\"' >> ~/.bash_profile"
-echo
-echo "or to add it for just this bash session"
-echo 'export PATH="$HOME/flutter/bin:$PATH"'
-echo
-echo "For fish shell, type this command"
-echo "fish_add_path -g -p \"\$HOME/flutter/bin/\""
-echo
-echo
+if whiptail --title "Confirmation" --yesno "Would you like to add flutter to your \$PATH variable?\nThis will be appended to your ~/.bash_profile\nYou will need to log out and back in for changes to take place.\nAfterwards you can use the 'flutter' command in a bash shell." 0 0; then
+    echo "User chose to continue."
+    echo 'export PATH="$HOME/flutter/bin:$PATH"' >> ~/.bash_profile
+    if [ -e "/usr/bin/chromium" ]; then
+        echo 'export CHROME_EXECUTABLE="/usr/bin/chromium"' >> ~/.bash_profile
+    elif [ -e "/snap/bin/chromium" ]; then
+        echo 'export CHROME_EXECUTABLE="/snap/bin/chromium"' >> ~/.bash_profile
+    fi
+else
+    echo "Please add flutter to your \$PATH variable to make it executable using the 'flutter' command."
+    echo "For bash shell type this command to add it to your bash path permanently."
+    echo "echo 'export PATH=\"\$HOME/flutter/bin:\$PATH\"' >> ~/.bash_profile"
+    echo
+    echo "or to add it for just this bash session"
+    echo 'export PATH="$HOME/flutter/bin:$PATH"'
+    echo
+    echo "For fish shell, type this command"
+    echo "fish_add_path -g -p \"\$HOME/flutter/bin/\""
+    if [ -e "/usr/bin/chromium" ]; then
+        echo
+        echo "Set the location for chromium for web develoment."
+        echo "echo 'export CHROME_EXECUTABLE=\"/usr/bin/chromium\"' >> ~/.bash_profile"
+        echo "or"
+        echo "export CHROME_EXECUTABLE=\"/usr/bin/chromium\""
+    elif [ -e "/snap/bin/chromium" ]; then
+        echo
+        echo "Set the location for chromium for web develoment."
+        echo "echo 'export CHROME_EXECUTABLE=\"/snap/bin/chromium\"' >> ~/.bash_profile"
+        echo "or"
+        echo "export CHROME_EXECUTABLE=\"/snap/bin/chromium\""
+    fi
+fi
+
 echo "Finally run in a terminal the command"
 echo "flutter doctor"
 echo "or"

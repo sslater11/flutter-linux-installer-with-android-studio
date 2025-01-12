@@ -112,6 +112,7 @@ if whiptail --title "Confirmation" --yesno "Would you like to add flutter to you
     elif [ -e "/snap/bin/chromium" ]; then
         echo 'export CHROME_EXECUTABLE="/snap/bin/chromium"' >> ~/.bash_profile
     fi
+    fish_add_path "$HOME/flutter/bin/"
 else
     echo "Please add flutter to your \$PATH variable to make it executable using the 'flutter' command."
     echo "For bash shell type this command to add it to your bash path permanently."
@@ -121,7 +122,7 @@ else
     echo 'export PATH="$HOME/flutter/bin:$PATH"'
     echo
     echo "For fish shell, type this command"
-    echo "fish_add_path -g -p \"\$HOME/flutter/bin/\""
+    echo "fish_add_path \"\$HOME/flutter/bin/\""
     if [ -e "/usr/bin/chromium" ]; then
         echo
         echo "Set the location for chromium for web develoment."
@@ -145,7 +146,12 @@ echo
 echo "for a more detailed output run"
 echo "$HOME/flutter/bin/flutter doctor -v"
 echo
-echo "and hopefully it'll work for you :)"
+echo "If it didn't work, you may need to logout and back in for changes to take effect."
+echo "A quick way to test if you need to login/out is to run theese commands:"
+echo "bash --login"
+echo "$HOME/flutter/bin/flutter doctor"
+echo
+echo "Hopefully it'll work for you :)"
 
 #Other environment variable that may be useful to someone :).
 ## for bash shell paste this into the terminal.

@@ -3,6 +3,9 @@ This script will install Flutter locally, download the Android SDK, and configur
 
 I kept getting errors where running `flutter doctor`. It couldn't find the correct SDK location and it took me ages to figure out why, so I wrote this script.
 
+# Warning
+Script will backup your folders `$HOME/Android` and `$HOME/flutter`. It will then download Android SDK tools and Flutter, Saving them to `$HOME/Android` and `$HOME/flutter`.
+
 # Usage
 Read through the install guide and install all dependencies for flutter
 https://docs.flutter.dev/get-started/install/linux/android
@@ -16,8 +19,6 @@ chmod +x flutter_my_install.sh
 ./flutter_my_install.sh
 ```
 
-# Warning
-Script will backup your folders $HOME/Android and $HOME/flutter. It will then download android SDK tools and flutter.
 
 # Before running
 Before running, you do need to download android studio ladybug and extract it to $HOME/android-studio-ladybug/

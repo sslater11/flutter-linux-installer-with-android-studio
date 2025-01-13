@@ -6,6 +6,9 @@ I kept getting errors where running `flutter doctor`. It couldn't find the corre
 # Warning
 Script will backup your folders `$HOME/Android` and `$HOME/flutter`. It will then download Android SDK tools and Flutter, Saving them to `$HOME/Android` and `$HOME/flutter`.
 
+# Before running
+Before running, you do need to download android studio ladybug and extract it to $HOME/android-studio-ladybug/
+
 # Usage
 Read through the install guide and install all dependencies for flutter
 https://docs.flutter.dev/get-started/install/linux/android
@@ -18,10 +21,6 @@ wget "https://raw.githubusercontent.com/sslater11/flutter-linux-installer-with-a
 chmod +x flutter_my_install.sh
 ./flutter_my_install.sh
 ```
-
-
-# Before running
-Before running, you do need to download android studio ladybug and extract it to $HOME/android-studio-ladybug/
 
 # Copyright / License
 BSD 3-Clause License
